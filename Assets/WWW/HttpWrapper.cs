@@ -24,7 +24,7 @@ public class HttpWrapper : MonoBehaviour
     /// 将一个表上传到远程的服务器
     /// </summary>
     /// <returns></returns>
-    public void POST(string url, Dictionary<string, string> post=null, Action<UnityWebRequest> onSuccess=null, Action<UnityWebRequest> onFail = null)
+    public void POST(string url, Dictionary<string, string> post = null, Action<UnityWebRequest> onSuccess = null, Action<UnityWebRequest> onFail = null)
     {
         WWWForm form = new WWWForm();
         post = new Dictionary<string, string>();
@@ -39,22 +39,15 @@ public class HttpWrapper : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Post(url, form);
         StartCoroutine(WaitForResponse(request, onSuccess, onFail));
     }
-
-    public void Put(string url, string Chinar, Action<UnityWebRequest> onSuccess, Action<UnityWebRequest> onFail = null)
-    {
-        byte[] myData = System.Text.Encoding.UTF8.GetBytes(Chinar);
-        using (UnityWebRequest uwr = UnityWebRequest.Put("url", myData))
-        {
-            StartCoroutine(WaitForResponse(uwr, onSuccess, onFail));
-        }
-    }
     IEnumerator WaitForResponse(UnityWebRequest request, Action<UnityWebRequest> onSuccess, Action<UnityWebRequest> onFail = null)
     {
         yield return request.SendWebRequest();
+        Debug.Log(request);
         if (request.isHttpError || request.isNetworkError)
         {
             Debug.LogError("UnityWebRequest Error: " + request.error);
-            if (onFail != null) onFail(request);
+            if (onFail != null)
+                onFail(request);
         }
         else
         {
@@ -62,4 +55,30 @@ public class HttpWrapper : MonoBehaviour
             onSuccess(request);
         }
     }
+    /// <summary>
+    /// 方法将数据发送到远程的服务器
+    /// </summary>
+    /// <param name="url"></param>
+    public void Put(string url, string Chinar, Action<UnityWebRequest> onSuccess, Action<UnityWebRequest> onFail = null)
+    {
+        StartCoroutine(Upload(url, Chinar, onSuccess));
+    }
+    IEnumerator Upload(string url, string Chinar, Action<UnityWebRequest> onSuccess, Action<UnityWebRequest> onFail = null)
+    {
+        byte[] myData = System.Text.Encoding.UTF8.GetBytes(Chinar);
+        using (UnityWebRequest request = UnityWebRequest.Put(url, myData))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError || request.isHttpError)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                Debug.Log("上传成功!");
+            }
+        }
+    }
+
 }
