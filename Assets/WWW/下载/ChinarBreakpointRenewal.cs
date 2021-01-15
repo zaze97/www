@@ -17,7 +17,8 @@ public class ChinarBreakpointRenewal : MonoBehaviour
     public Text SliderValue; //滑动条值
     private Button startBtn;    //开始按钮
     private Button pauseBtn;    //暂停按钮
-    private string Url = "http://images0.cnblogs.com/blog2015/686199/201505/311920537358907.jpg";
+    //private string Url = "http://images0.cnblogs.com/blog2015/686199/201505/311920537358907.jpg";
+    private string Url = "http://dldir1.qq.com/qqfile/qq/TIM2.0.0/22317/TIM2.0.0.exe";
 
     /// <summary>
     /// 初始化UI界面及给按钮绑定方法
@@ -39,7 +40,7 @@ public class ChinarBreakpointRenewal : MonoBehaviour
     /// </summary>
     public void OnClickStartDownload()
     {
-        StartCoroutine(DownloadFile(Url, Application.streamingAssetsPath + "/MP4/00-效果.mp4", CallBack));
+        StartCoroutine(DownloadFile(Url, Application.streamingAssetsPath + "/MP4", CallBack));
     }
 
 

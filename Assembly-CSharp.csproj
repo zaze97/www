@@ -63,6 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Download\DownlaodFile.cs" />
+    <Compile Include="Assets\Scripts\Download\_DownloadHandler.cs" />
+    <Compile Include="Assets\Scripts\TestDownload.cs" />
     <Compile Include="Assets\WWW\上传\HttpWrapper.cs" />
     <Compile Include="Assets\WWW\上传\httpTest.cs" />
     <Compile Include="Assets\WWW\下载\ChinarBreakpointRenewal.cs" />

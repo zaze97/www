@@ -14,8 +14,8 @@ public class httpTest : MonoBehaviour
         this.onSuccess += this.SuccessMethod;
         HttpWrapper hw = GetComponent<HttpWrapper>();
         // hw.GET("http://www.baidu.com", this.onSuccess);
-         hw.POST("http://www.baidu.com",null,this.onSuccess);
-        //hw.Put("http://www.baidu.com", "Chinar的测试数据", this.onSuccess);
+         //hw.POST("http://www.baidu.com",null,this.onSuccess);
+        hw.Put("http://www.baidu.com", "Chinar的测试数据", this.onSuccess);
 
     }
 
