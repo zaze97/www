@@ -21,10 +21,10 @@ public class httpTest : MonoBehaviour
 
     private void SuccessMethod(UnityWebRequest request)
     {
-        //if (request == null)
-        //    return;
-        //Texture tex = DownloadHandlerTexture.GetContent(request);
-        //GetComponent<MeshRenderer>().material.mainTexture = tex;
+        if (request == null)
+            return;
+        Texture tex = DownloadHandlerTexture.GetContent(request);
+        GetComponent<MeshRenderer>().material.mainTexture = tex;
         Debug.Log("发送成功");
     }
 

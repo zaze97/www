@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class TestDownload : MonoBehaviour {
 
     //网络上的资源支持断点续传
-    string url1 = "http://192.168.3.72/JetBrains.Rider-2020.2.4.exe";
+    string url1 = "http://10.1.2.199/android-ndk-r19-windows-x86_64.zip";
     string url2 = "http://sqdd.myapp.com/myapp/qqteam/tim/down/tim.apk";
 
     //经测试，无法对本地文件进行断点续传，如果暂停后继续下载，会把暂停前下载的数据量累加到总的文件数据中；只有不暂停直至下载完成才会获取完整文件

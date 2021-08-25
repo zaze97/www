@@ -3,3 +3,5 @@ Temp
 *.csproj
 www.sln
 Logs
+obj
+.idea
